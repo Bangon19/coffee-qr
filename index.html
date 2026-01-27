@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Quán Cà Phê</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>☕ MENU QUÁN CÀ PHÊ</h1>
+
+<div class="menu">
+    <div class="item">
+        <h3>Cà phê sữa</h3>
+        <p>20.000đ</p>
+        <button onclick="addToCart('Cà phê sữa', 20000)">Thêm</button>
+    </div>
+
+    <div class="item">
+        <h3>Trà sữa</h3>
+        <p>25.000đ</p>
+        <button onclick="addToCart('Trà sữa', 25000)">Thêm</button>
+    </div>
+</div>
+
+<h2>🛒 Giỏ hàng</h2>
+<ul id="cart"></ul>
+
+<h3>Tổng tiền: <span id="total">0</span> đ</h3>
+
+<button onclick="checkout()">✅ Đặt món</button>
+
+<script src="script.js"></script>
+</body>
+</html>

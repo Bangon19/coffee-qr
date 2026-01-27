@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý đơn hàng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>📋 DANH SÁCH ĐƠN HÀNG</h1>
+
+<div id="orders"></div>
+
+<script>
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+let container = document.getElementById("orders");
+
+orders.forEach((order, i) => {
+    let div = document.createElement("div");
+    div.className = "order-box";
+
+    let html = `<h3>🕒 ${order.time}</h3><ul>`;
+    let total = 0;
+
+    order.items.forEach(item => {
+        total += item.price;
+        html += `<li>${item.name} - ${item.price}đ</li>`;
+    });
+
+    html += `</ul><strong>Tổng: ${total} đ</strong>
+    <br><button onclick="removeOrder(${i})">Xóa đơn</button>`;
+
+    div.innerHTML = html;
+    container.appendChild(div);
+});
+
+function removeOrder(index) {
+    orders.splice(index, 1);
+    localStorage.setItem("orders", JSON.stringify(orders));
+    location.reload();
+}
+</script>
+
+</body>
+</html>
